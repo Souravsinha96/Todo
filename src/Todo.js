@@ -93,7 +93,7 @@ export default function Todo({
               <button
                 disabled={completed === true}
                 className="button"
-                style={{ marginRight: "5px" }}
+                style={{ marginRight: "5px", backgroundColor: "blue" }}
                 onClick={() => {
                   setTodoEditing(index);
                   setEditText(data);

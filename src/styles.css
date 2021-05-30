@@ -16,7 +16,13 @@
   flex-direction: row;
   align-items: center;
   margin: 10px;
-  background-color: beige;
+}
+.main:nth-child(odd) {
+  background-color: #f8eded;
+}
+
+.main:nth-child(even) {
+  background: #e4bad4;
 }
 
 .added {
