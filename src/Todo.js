@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 
 export default function Todo({ datas, setDatas, pending, setPending }) {
@@ -23,41 +23,44 @@ export default function Todo({ datas, setDatas, pending, setPending }) {
       setPending(pending - 1);
     }
   };
+
   return (
-    <div className="container">
+    <div>
       <h3>Pending Task: {pending}</h3>
+      {/* {edit? <input /> : */}
       {datas.map(({ data, completed }, index) => (
         <div className="main" key={index}>
           <h4
             style={{
               textDecorationLine: completed ? "line-through" : undefined,
               marginLeft: "1rem",
-              letterSpacing: "0.5px",
-              width: "200px"
+              letterSpacing: "0.5px"
             }}
           >
             {data}
           </h4>
-          <button
-            className="disabledbutton"
-            disabled={completed === true}
-            onClick={() => {
-              handleComplete(index);
-            }}
-          >
-            Complete
-          </button>
-          <button
-            className="added"
-            style={{
-              backgroundColor: "firebrick",
-              marginRight: "1rem",
-              padding: "0 15px"
-            }}
-            onClick={() => handleDelete(index)}
-          >
-            X
-          </button>
+          <div>
+            <button
+              className="button"
+              disabled={completed === true}
+              onClick={() => {
+                handleComplete(index);
+              }}
+            >
+              Complete
+            </button>
+            <button
+              className="added"
+              style={{
+                backgroundColor: "firebrick",
+                marginRight: "1rem",
+                padding: "0 15px"
+              }}
+              onClick={() => handleDelete(index)}
+            >
+              X
+            </button>
+          </div>
         </div>
       ))}
     </div>

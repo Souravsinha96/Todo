@@ -1,13 +1,6 @@
 .App {
   font-family: sans-serif;
   text-align: center;
-}
-
-.container {
-  border: 1px solid red;
-  border-radius: 3px;
-  margin: 10px;
-  background-color: #fff;
   max-width: 800px;
   margin: 2rem auto;
 }
@@ -18,7 +11,7 @@
   border-radius: 3px;
   margin-bottom: 0.75rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   margin: 10px;
@@ -47,7 +40,7 @@ input:focus,
 .added:focus {
   outline: none;
 }
-.disabledbutton {
+.button {
   border-radius: 3px;
   letter-spacing: 1px;
   border: none;
@@ -55,11 +48,11 @@ input:focus,
   cursor: pointer;
   color: white;
   background-color: green;
-  margin-left: 35rem;
+
   padding: 5px 10px;
   font-size: 0.6rem;
 }
-.disabledbutton:disabled {
+.button:disabled {
   background-color: grey;
   cursor: not-allowed;
 }

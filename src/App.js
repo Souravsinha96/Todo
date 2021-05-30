@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./styles.css";
 import Todo from "./Todo";
 
 export default function App() {
-  var count = 0;
   const [task, setTask] = useState({
-    id: count,
     data: "",
     completed: false
   });
   const [datas, setDatas] = useState([]);
   const [pending, setPending] = useState(0);
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    inputEl.current.focus();
+  }, [datas]);
 
   const handleChange = () => {
     if (task.data === "") {
@@ -22,23 +25,30 @@ export default function App() {
 
     setTask({ data: "" });
   };
+  const handleClear = () => {
+    setDatas([]);
+    setPending(0);
+  };
 
   return (
     <div className="App">
       <h1>Todo List</h1>
+
       <input
+        ref={inputEl}
         value={task.data}
         onChange={(e) => setTask({ data: e.target.value, completed: false })}
         type="text"
         placeholder="Add a new Task"
       />
+
       <button
         disabled={task.data === ""}
         className="added"
         type="button"
         onClick={handleChange}
       >
-        Add
+        ADD
       </button>
 
       <Todo
@@ -47,6 +57,16 @@ export default function App() {
         datas={datas}
         setDatas={setDatas}
       />
+      <button
+        disabled={datas.length === 0}
+        className="added"
+        onClick={() => handleClear()}
+        style={{
+          fontSize: "15px"
+        }}
+      >
+        Clear List
+      </button>
     </div>
   );
 }
