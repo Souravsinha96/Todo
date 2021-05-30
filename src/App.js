@@ -15,9 +15,12 @@ export default function App() {
   const inputEl = useRef(null);
   useEffect(() => {
     const temp = localStorage.getItem("todos");
+    const temp1 = localStorage.getItem("pending");
     const loadedTodos = JSON.parse(temp);
+    const pendingTodos = JSON.parse(temp1);
     if (loadedTodos) {
       setDatas(loadedTodos);
+      setPending(pendingTodos);
     }
   }, []);
 
@@ -25,7 +28,9 @@ export default function App() {
     inputEl.current.focus();
     const temp = JSON.stringify(datas);
     localStorage.setItem("todos", temp);
-  }, [datas]);
+    const temp1 = JSON.stringify(pending);
+    localStorage.setItem("pending", temp1);
+  }, [datas, pending]);
 
   const handleChange = () => {
     if (task.data === "") {
