@@ -9,6 +9,9 @@ export default function App() {
   });
   const [datas, setDatas] = useState([]);
   const [pending, setPending] = useState(0);
+
+  const [todoEditing, setTodoEditing] = useState(null);
+  const [editText, setEditText] = useState("");
   const inputEl = useRef(null);
 
   useEffect(() => {
@@ -28,6 +31,8 @@ export default function App() {
   const handleClear = () => {
     setDatas([]);
     setPending(0);
+    setEditText("");
+    setTodoEditing(null);
   };
 
   return (
@@ -56,7 +61,12 @@ export default function App() {
         setPending={setPending}
         datas={datas}
         setDatas={setDatas}
+        todoEditing={todoEditing}
+        setTodoEditing={setTodoEditing}
+        editText={editText}
+        setEditText={setEditText}
       />
+
       <button
         disabled={datas.length === 0}
         className="added"
