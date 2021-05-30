@@ -36,6 +36,9 @@ input {
   height: 30px;
   width: 200px;
 }
+.editbutton {
+  border: 1px solid rgb(231, 143, 143);
+}
 
 input:focus,
 .added:focus {

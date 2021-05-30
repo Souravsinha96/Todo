@@ -13,9 +13,18 @@ export default function App() {
   const [todoEditing, setTodoEditing] = useState(null);
   const [editText, setEditText] = useState("");
   const inputEl = useRef(null);
+  useEffect(() => {
+    const temp = localStorage.getItem("todos");
+    const loadedTodos = JSON.parse(temp);
+    if (loadedTodos) {
+      setDatas(loadedTodos);
+    }
+  }, []);
 
   useEffect(() => {
     inputEl.current.focus();
+    const temp = JSON.stringify(datas);
+    localStorage.setItem("todos", temp);
   }, [datas]);
 
   const handleChange = () => {
